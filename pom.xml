@@ -33,15 +33,6 @@
 			<artifactId>spring-cloud-gcp-starter</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-gcp-starter-pubsub</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-gcp-starter-storage</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -56,6 +47,12 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jsondoc/jsondoc-maven-plugin -->
+		<dependency>
+		    <groupId>org.jsondoc</groupId>
+		    <artifactId>jsondoc-maven-plugin</artifactId>
+		    <version>1.2.22</version>
 		</dependency>
 	</dependencies>
 
@@ -76,6 +73,23 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.jsondoc</groupId>
+				<artifactId>jsondoc-maven-plugin</artifactId>
+				<version>1.2.22</version>
+				<configuration>
+					<version>1.1</version>
+					<basePath>http://localhost:8080/api</basePath>
+					<packages>
+						<package>ar.com.jmvg.challenges.minesweeper.api.controller</package>
+						<package>ar.com.jmvg.challenges.minesweeper.api.model</package>
+					</packages>
+					<outputFile>./src/main/resources/static/jsondoc.json</outputFile>
+					<scanner>org.jsondoc.core.scanner.DefaultJSONDocScanner</scanner>
+					<playgroundEnabled>true</playgroundEnabled> <!-- optional -->
+					<displayMethodAs>URI</displayMethodAs> <!-- optional -->
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
