@@ -18,8 +18,36 @@
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Hoxton.SR1</spring-cloud.version>
 	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+			  <groupId>com.google.cloud</groupId>
+			  <artifactId>google-cloud-bom</artifactId>
+			  <version>0.120.2-alpha</version>
+			  <type>pom</type>
+			  <scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<dependencies>
+	<!-- GCP Dependencies -->
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-api-1.0-sdk</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.cloud/google-cloud-core -->
+		<dependency>
+		    <groupId>com.google.cloud</groupId>
+		    <artifactId>google-cloud-core</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -50,48 +78,22 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.jsondoc/jsondoc-maven-plugin -->
 		<dependency>
-		    <groupId>org.jsondoc</groupId>
-		    <artifactId>jsondoc-maven-plugin</artifactId>
-		    <version>1.2.22</version>
+        	<groupId>org.jsondoc</groupId>
+        	<artifactId>spring-boot-starter-jsondoc</artifactId>
+        	<version>1.2.22</version>
+		</dependency>
+		<dependency>
+	        <groupId>org.jsondoc</groupId>
+	        <artifactId>jsondoc-ui-webjar</artifactId>
+	        <version>1.2.22</version>
 		</dependency>
 	</dependencies>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.jsondoc</groupId>
-				<artifactId>jsondoc-maven-plugin</artifactId>
-				<version>1.2.22</version>
-				<configuration>
-					<version>1.1</version>
-					<basePath>http://localhost:8080/api</basePath>
-					<packages>
-						<package>ar.com.jmvg.challenges.minesweeper.api.controller</package>
-						<package>ar.com.jmvg.challenges.minesweeper.api.model</package>
-					</packages>
-					<outputFile>./src/main/resources/static/jsondoc.json</outputFile>
-					<scanner>org.jsondoc.core.scanner.DefaultJSONDocScanner</scanner>
-					<playgroundEnabled>true</playgroundEnabled> <!-- optional -->
-					<displayMethodAs>URI</displayMethodAs> <!-- optional -->
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
-
 </project>
