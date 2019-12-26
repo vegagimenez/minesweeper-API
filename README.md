@@ -10,9 +10,7 @@ This project implements an API for the classic game Minesweeper, is not the inte
 * [Security Implementation with Spring Security & OAuth2]
 * [Persistence implementation with Spring Cloud to use GCP/GAE Datastore]
  
-API documentation available at url: http://minesweeper-api.appspot.com
-
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
+API documentation available at url: http://api-project.appspot.com
 
 ### Guides
 The following guides illustrate how to use some features concretely:
