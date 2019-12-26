@@ -1,5 +1,6 @@
 package ar.com.jmvg.challenges.minesweeper.api;
 
+import org.jsondoc.spring.boot.starter.EnableJSONDoc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -9,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication(scanBasePackages = {"ar.com.jmvg.challenges.minesweeper.api"})
+@EnableJSONDoc
 public class MinesweeperApiApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
