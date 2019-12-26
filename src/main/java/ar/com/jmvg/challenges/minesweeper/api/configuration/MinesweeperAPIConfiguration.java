@@ -9,7 +9,11 @@ public class MinesweeperAPIConfiguration extends WebMvcConfigurationSupport {
     
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-            registry.addResourceHandler("**/*.css", "**/*.js", "**/*.map", "*.html").addResourceLocations("classpath:META-INF/resources/").setCachePeriod(0);
+            registry.addResourceHandler("**/*.css", "**/*.js", "**/*.map", "*.html")
+            			.addResourceLocations("classpath:META-INF/resources/")
+            			.addResourceLocations("classpath:META-INF/resources/static")
+            			.addResourceLocations("/*.html")
+            			.setCachePeriod(0);
     }
 
 }
