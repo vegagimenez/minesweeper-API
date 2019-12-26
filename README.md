@@ -3,7 +3,8 @@
 ### Reference Documentation
 Minesweeper API Challenge 
 
-This project implements an API for the classic game Minesweeper, is not intent to be fully terminated just to show how to have:
+This project implements an API for the classic game Minesweeper, is not the intent to be fully terminated just to show how to have:
+
 * [Restfull API with SpringBoot]
 * [Documented API with JsonDoc]
 * [Security Implementation with Spring Security & OAuth2]
