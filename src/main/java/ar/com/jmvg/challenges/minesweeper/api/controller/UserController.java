@@ -3,8 +3,6 @@ package ar.com.jmvg.challenges.minesweeper.api.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -20,13 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 import ar.com.jmvg.challenges.minesweeper.api.exception.MinesweeperAPIException;
 import ar.com.jmvg.challenges.minesweeper.api.model.User;
 import ar.com.jmvg.challenges.minesweeper.api.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/minesweeper/api/user")
 public class UserController {
 
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	
 	@Autowired
 	private UserService userService;
 	
@@ -35,7 +33,7 @@ public class UserController {
 	 * */
 	@RequestMapping(method = RequestMethod.GET, value = {"/",""}, produces = { MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<List<User>> getUserList(@RequestHeader(required = true, value = HttpHeaders.AUTHORIZATION) String authorizationHeader) throws MinesweeperAPIException {
-		logger.info("INIT: getting user list.");
+		log.info("INIT: getting user list.");
 		List<User> users = new ArrayList<User>();
 		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
 	}
@@ -49,7 +47,7 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.GET, value = {"/{id}"}, produces = { MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<User> getUser(@RequestHeader(required = true, value = HttpHeaders.AUTHORIZATION) String authorizationHeader,
 			@PathVariable("id") Long id) throws MinesweeperAPIException {
-		logger.info("INIT: getting user by id:" + id);
+		log.info("INIT: getting user by id:" + id);
 		User user = userService.getUserbyId(id);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
@@ -57,7 +55,7 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.POST, value = {"/",""}, produces = { MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<User> createUser(@RequestHeader(required = true, value = HttpHeaders.AUTHORIZATION) String authorizationHeader,
 			@RequestBody User user) throws MinesweeperAPIException {
-		logger.info("INIT: saving a new user.");
+		log.info("INIT: saving a new user.");
 		User userSaved = userService.saveOrUpdate(user);
 		return new ResponseEntity<User>(userSaved, HttpStatus.OK);
 	}
@@ -65,7 +63,7 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.PUT, value = {"/",""}, produces = { MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<User> updateUser(@RequestHeader(required = true, value = HttpHeaders.AUTHORIZATION) String authorizationHeader,
 			@RequestBody User user) throws MinesweeperAPIException {
-		logger.info("INIT: updating user.");
+		log.info("INIT: updating user.");
 		User userUpdated = userService.saveOrUpdate(user);
 		return new ResponseEntity<User>(userUpdated, HttpStatus.OK);
 	}
