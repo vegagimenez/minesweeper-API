@@ -2,6 +2,7 @@ package ar.com.jmvg.challenges.minesweeper.api.controller;
 
 import org.jsondoc.core.annotation.Api;
 import org.jsondoc.core.annotation.ApiAuthToken;
+import org.jsondoc.core.annotation.ApiBodyObject;
 import org.jsondoc.core.annotation.ApiMethod;
 import org.jsondoc.core.annotation.ApiResponseObject;
 import org.jsondoc.core.annotation.ApiVersion;
@@ -53,6 +54,7 @@ public class GameController {
 	}
 	
 	@ApiMethod
+	@ApiBodyObject()
 	@ApiResponseObject
 	@RequestMapping(method = RequestMethod.POST, value = {"/",""}, produces = { MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<Game> startNewGame(@RequestHeader(required = true, value = HttpHeaders.AUTHORIZATION) String authorizationHeader,

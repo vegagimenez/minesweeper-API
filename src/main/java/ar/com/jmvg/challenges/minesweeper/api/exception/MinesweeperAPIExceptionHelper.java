@@ -9,6 +9,8 @@ import org.apache.http.HttpStatus;
  * */
 public class MinesweeperAPIExceptionHelper {
 
+	private static final String DEFAULT_ERR_MSG_INVALID_FIELDS = "Invalid arguments exception in fields:";
+	
 	public static MinesweeperAPIException forbiddenException() {
 		return new MinesweeperAPIException("You are not allowed not do this operation.", HttpStatus.SC_FORBIDDEN);
 	}
@@ -25,10 +27,10 @@ public class MinesweeperAPIExceptionHelper {
 		return new MinesweeperAPIException("Not accepted.", HttpStatus.SC_NOT_ACCEPTABLE);
 	}
 	public static MinesweeperAPIException invalidArgumentsException(List<String> invalidFields) {
-		return MinesweeperAPIExceptionHelper.invalidArgumentsException(invalidFields.toString());
+		return MinesweeperAPIExceptionHelper.invalidArgumentsException(invalidFields.toString(), null);
 	}
-	public static MinesweeperAPIException invalidArgumentsException(String invalidField) {
-		StringBuffer sb = new StringBuffer("Invalid arguments exception in fields:");
+	public static MinesweeperAPIException invalidArgumentsException(String invalidField, String customMsg) {
+		StringBuffer sb = (null == customMsg)?new StringBuffer(DEFAULT_ERR_MSG_INVALID_FIELDS):new StringBuffer(customMsg);
 		sb.append(invalidField.toString());	
 		return new MinesweeperAPIException(sb.toString(), HttpStatus.SC_BAD_REQUEST);
 	}

@@ -25,5 +25,7 @@ public class Game extends AbstractEntityAuditable {
 	
 	@ApiObjectField(description = "The amount of points earned with this Game.")
 	private Long points;
+	
+	private Board board;
 	//TODO: Implement GameStatus to tracking.
 }
