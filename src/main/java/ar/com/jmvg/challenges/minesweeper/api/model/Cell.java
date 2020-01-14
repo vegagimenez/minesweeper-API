@@ -3,10 +3,14 @@ package ar.com.jmvg.challenges.minesweeper.api.model;
 import java.util.List;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class Cell extends AbstractEntityAuditable {
 	
+	private static final long serialVersionUID = 8894745749330323416L;
+
 	private Boolean isRevealed = false;
 	private Boolean isFlagged = false;
 	private Boolean isMine = false;

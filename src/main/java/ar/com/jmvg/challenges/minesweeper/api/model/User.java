@@ -3,8 +3,10 @@ package ar.com.jmvg.challenges.minesweeper.api.model;
 import org.springframework.cloud.gcp.data.datastore.core.mapping.Entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Entity
 public class User extends AbstractEntityAuditable {
 

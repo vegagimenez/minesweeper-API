@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import ar.com.jmvg.challenges.minesweeper.api.exception.MinesweeperAPIException;
 import ar.com.jmvg.challenges.minesweeper.api.model.Board;
-import ar.com.jmvg.challenges.minesweeper.api.model.Difficulty;
 import ar.com.jmvg.challenges.minesweeper.api.model.Game;
 
 @Service
