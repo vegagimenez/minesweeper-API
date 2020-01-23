@@ -24,18 +24,18 @@ public class CellService {
 		if(null == board)
 			throw MinesweeperAPIExceptionHelper.invalidArgumentsException(Board.class.getName(), ERR_MSG_TMPL);
 
-		int rows = board.getGame().getConfig().getDifficulty().getRows();
-		int columns = board.getGame().getConfig().getDifficulty().getColumns();
+		int rows = board.getDifficulty().getRows();
+		int columns = board.getDifficulty().getColumns();
 		
 		for (int row = 0; row < rows; row++) {
             
 			for (int column = 0; column < columns; column++) {
-                Cell cell = board.getCells()[row][column];
+                //Cell cell = board.getCells()[row][column];
                 Position position = new Position(row,column);
                 
                 for (Position adjPos : adjacentCoordinates) {
-					if(adjPos.isAdjacent(position))
-						cell.getNeighborCells().add(board.getCells()[adjPos.getX()][adjPos.getY()]);
+					//if(adjPos.isAdjacent(position))
+						//cell.getNeighborCells().add(board.getCells()[adjPos.getX()][adjPos.getY()]);
 				}
             }
 		}

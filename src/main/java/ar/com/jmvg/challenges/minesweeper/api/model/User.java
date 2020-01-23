@@ -1,6 +1,7 @@
 package ar.com.jmvg.challenges.minesweeper.api.model;
 
 import org.springframework.cloud.gcp.data.datastore.core.mapping.Entity;
+import org.springframework.data.annotation.Transient;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,5 +16,7 @@ public class User extends AbstractEntityAuditable {
 	private String email;
 	private String password;
 	private Long totalPoints;
+	@Transient
+	private String token;
 	
 }

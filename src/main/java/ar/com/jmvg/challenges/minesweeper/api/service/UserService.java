@@ -1,8 +1,10 @@
 package ar.com.jmvg.challenges.minesweeper.api.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.com.jmvg.challenges.minesweeper.api.model.User;
+import ar.com.jmvg.challenges.minesweeper.api.repository.UserRepository;
 
 /**
  * User service implementation, yes I can create Interfaces for the every service but I think for some projects
@@ -13,10 +15,23 @@ import ar.com.jmvg.challenges.minesweeper.api.model.User;
  * */
 @Service
 public class UserService {
-
+	
+	private final static String FAKE_TOKEN = "ewoJImFsZyI6ICJSUzI1NiIKfSAKewoJInN1YiI6ICJ3aGF0ZXZlcml3YW50IiwKCSJncmFudC1hY2Nlc3MiOiBbewoJCSJhcHBsaWNhdGlvbiI6ICJhcHBuYW1lIiwKCQkiYWNjZXNzIjogW10KCX1dLAoJImlzcyI6ICJodHRwczpcL1wvaXNzdWVyLm1lIiwKCSJyZWZyZXNoRXhwaXJhdGlvbiI6IDE1Nzk3MzQxMzEsCgkiZXhwIjogMTU3OTcyNzgzMSwKCSJpYXQiOiAxNTc5NzI2OTMxCn0=";
+	
+	@Autowired
+	UserRepository repo;
+	
 	public User login(String login, String pass) {
-		// TODO Auto-generated method stub
-		return null;
+	
+		User user = repo.findByLoginAndPass(login, pass);
+		if(null == user) {
+			user = new User();
+			user.setEmail(login);
+			user.setPassword(pass);
+			user = saveOrUpdate(user);
+		}
+		user.setToken(FAKE_TOKEN);
+		return user;
 	}
 
 	public User getUserbyId(Long id) {
@@ -25,8 +40,7 @@ public class UserService {
 	}
 
 	public User saveOrUpdate(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		return repo.save(user);
 	}
 
 }

@@ -20,7 +20,7 @@ import ar.com.jmvg.challenges.minesweeper.api.service.UserService;
  * 
  * */
 @RestController
-@RequestMapping("/api/login")
+@RequestMapping("/minesweeper/api/login")
 public class LoginController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());

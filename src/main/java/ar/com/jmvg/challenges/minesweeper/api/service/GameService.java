@@ -1,6 +1,7 @@
 package ar.com.jmvg.challenges.minesweeper.api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ar.com.jmvg.challenges.minesweeper.api.exception.MinesweeperAPIException;
 import ar.com.jmvg.challenges.minesweeper.api.exception.MinesweeperAPIExceptionHelper;
@@ -9,6 +10,7 @@ import ar.com.jmvg.challenges.minesweeper.api.model.Game;
 import ar.com.jmvg.challenges.minesweeper.api.model.GameConfig;
 import ar.com.jmvg.challenges.minesweeper.api.model.User;
 
+@Service
 public class GameService {
 
 	private static final String ERR_MSG_TMPL = "Game field can't be null: ";
