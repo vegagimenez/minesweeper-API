@@ -16,7 +16,9 @@ public class Position {
 	/**
 	 * Checks if this position is adjacent to the position received in the parameter.
 	 * */
-	public Boolean isAdjacent(Position pos) {
-		return Math.abs(this.x - pos.getX()) <= 1 && Math.abs(this.y - pos.getY()) <= 1;
+	public Boolean isAdjacent(Position pos, Difficulty difficulty) {
+		
+		return (this.x >= 0) && (this.x < difficulty.getRows()) && (this.y >= 0) && (this.y < difficulty.getColumns());
+		
 	}
 }

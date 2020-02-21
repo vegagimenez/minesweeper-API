@@ -16,6 +16,7 @@ public class Cell extends AbstractEntityAuditable {
 	private Boolean isFlagged = false;
 	private Boolean isMine = false;
 	private Integer neighborMines = 0;//amount of mines that are neighbor of this cell
-	private List<Cell> neighborCells = new ArrayList<Cell>();
+	private Position position = new Position(-1,-1);
+	private List<Position> neighborPositions = new ArrayList<Position>();
 
 }

@@ -16,7 +16,7 @@ public class BoardService {
 	public Board initBoard(Game game) throws MinesweeperAPIException {
 		
 		Board board = new Board(game);
-		//cellService.initNeighborhoodCells(board);
+		cellService.initNeighborhoodCells(board);
 		
 		return board;
 	}
